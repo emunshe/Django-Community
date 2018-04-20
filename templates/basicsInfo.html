@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .info_basics{
+            background: white;
+            height: 500px;
+        }
+        .info_basics div{
+            padding-top: 40px;
+            padding-left: 20px;
+        }
+    .info_basics div input{
+        margin-left: 150px;
+         width: 250px;
+        height: 20px;
+    }
+    .info_basics div select{
+        margin-left: 150px;
+    }
+    .info_basics div span{
+        margin-left: 130px;
+    }
+        input{
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script type="text/javascript" src="{% static 'jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user.js' %}"></script>
+</head>
+
+<body>
+<form action="/basicsInfo/" method="post" class="info_basics">
+    {% csrf_token %}
+    <div>
+        <lable>用户名</lable><span>{{ user.username }}</span><br><br><br>
+        <lable>真实姓名</lable><input class="changed" type="text" name="real_name" style="margin-left: 120px" value="{{ user.name }}"><br><br>
+        <lable>学历</lable><input class="changed" type="text" name="education" value="{{ user.education }}"><br><br>
+        <lable>性别</lable><select class="changed" name="sex">
+                                {% if user.sex == '男' %}
+                                <option selected>男</option>
+                                {% elif user.sex == '女' %}
+                                <option selected>女</option>
+                                {% else %}
+                                <option></option>
+                                <option>男</option>
+                                <option>女</option>
+                                {% endif %}
+                            </select><br><br>
+        <lable>年龄</lable><input class="changed" type="text" name="age" value="{{ user.age }}"><br><br>
+        <lable>兴趣</lable><input class="changed" type="text" name="hobby" value="{{ user.hobby }}"><br><br>
+        <lable>签名</lable><input class="changed" type="text" name="signature" value="{{ user.signature }}"><br><br>
+        <input type="submit" value="提交" style="width: 50px; color: white; background-color: royalblue; margin-left: 180px">
+        <font style="color: red">{{ msgs.msg }}</font>
+    </div>
+</form>
+</body>
+</html>

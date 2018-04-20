@@ -1,0 +1,63 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #3c3c3c;
+}
+.forum_content{
+    margin: 0 auto;
+    height: 700px;
+    width: 70%;
+    background-color: white;
+    border: 1px solid #c8c8c8;
+    margin-top: 50px;
+    position: relative;
+}
+.title_table{
+    width: 100%;
+    border-bottom: 1px solid #c8c8c8;
+    background-color: #c8c8c8;
+
+}
+td{
+    font-size: 14px;
+}
+.cont_table table{
+    border-bottom: #C2D5E3 1px solid;
+    padding: 10px 0;
+
+}
+.cont_table table:hover{
+    background-color: lightblue;
+}
+#pagebar{
+    line-height: 30px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+}
+#pagebar a{
+    font-size: 15px;
+    width: 10px;
+    height: 5px;
+    border: 1px cornflowerblue solid;
+}
+#pagebar a:hover{
+    color: orangered;
+    border: 1px orangered solid;
+}
+.reply_form{
+    margin: 0 auto;
+    width: 70%;
+    background-color: white;
+    border: 1px solid #c8c8c8;
+}
+.reply_title{
+    height: 35px;
+    background-color: #C2D5E3;
+}
+.reply_content{
+    margin-top: 20px;
+}

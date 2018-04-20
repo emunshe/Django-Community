@@ -1,0 +1,41 @@
+li{
+    list-style-type: none;
+}
+.information{
+    height: 650px;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+}
+.content{
+    border: 1px solid #c8c8c8;
+    height: 500px;
+    margin-top: 50px;
+}
+.info_title{
+    float: left;
+    overflow: hidden;
+    height: 500px;
+    width: 18%;
+    background-color: rgba(222,222,222,1);
+}
+.title_set{
+    padding: 15px 0 0 10px;
+    color: rgba(0,0,0,0.6);
+}
+.info_title ul li{
+    padding-bottom: 10px;
+    border-bottom: grey dashed 1px;
+    margin:15px 10px 15px 10px;
+}
+.info_title ul li a{
+    color: rgba(0,0,0,0.7);
+}
+.info_title ul li:hover{
+    color: orangered;
+}
+
+
+
+
+

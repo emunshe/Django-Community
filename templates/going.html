@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .info_going{
+            background: white;
+            height: 500px;
+        }
+        .info_going div{
+            padding-top: 40px;
+            padding-left: 20px;
+        }
+        .info_going div input{
+            width: 250px;
+            height: 20px;
+            margin-left: 150px;
+        }
+        .info_going div select{
+            margin-left: 150px;
+        }
+        .info_going div span{
+            margin-left: 130px;
+        }
+        input{
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script type="text/javascript" src="{% static 'jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user.js' %}"></script>
+</head>
+
+<body>
+<form action="/going/" method="post" class="info_going">
+    {% csrf_token %}
+    <div>
+        <lable>用户名</lable><span>{{ user.username }}</span><br><br><br>
+        <lable>公司</lable><input class="changed" type="text" name="company" value="{{ user.company }}"><br><br><br>
+        <lable>职业</lable><input class="changed" type="text" name="profession" value="{{ user.profession }}"><br><br><br>
+        <lable>职位</lable><input class="changed" type="text" name="position" value="{{ user.position }}"><br><br><br>
+        <lable>收入</lable><input class="changed" type="text" name="income" value="{{ user.income }}"><br><br><br>
+        <input type="submit" value="提交" style="width: 50px; color: white; background-color: royalblue; margin-left: 180px">
+        <font style="color: red">{{ msgs.msg }}</font>
+    </div>
+</form>
+</body>
+</html>

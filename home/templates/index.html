@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>稀里吧啦</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+</head>
+
+<body style="background: url({% static 'index.jpg' %}) no-repeat">
+    <div class="index">
+        {% include 'header.html' %}
+
+        <div class="index_body">
+            <div class="logo">
+                <img src="{% static 'en.png' %}">
+                <img src="{% static 'logo.png' %}">
+                <p>欢迎您的到来</p>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

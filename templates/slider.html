@@ -1,0 +1,51 @@
+<aside id="sidebar">
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期公告</h3>
+    <div class="widget">
+      <ul>
+          {% for ra in r_anmts %}
+              <li>
+            <a href="/anmtcont/?aid={{ ra.id }}" target="_blank">{{ ra.a_title }}</a>
+          </li>
+          {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期新闻</h3>
+    <div class="widget">
+      <ul>
+          {% for rn in r_news %}
+              <li>
+                <a href="/newcont/?nid={{ rn.id }}" target="_blank">{{ rn.n_title }}</a>
+              </li>
+          {% endfor %}
+
+
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期反馈</h3>
+    <div class="widget">
+      <ul>
+          {% for fb in feedbacks %}
+              <li>
+                  <a href="/post/?pid={{ fb.pid }}" target="_blank">{{ fb.p_title }}</a>
+              </li>
+          {% endfor %}
+          
+
+
+      </ul>
+    </div>
+  </div>
+</aside>

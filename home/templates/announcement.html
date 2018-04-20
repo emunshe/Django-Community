@@ -1,0 +1,79 @@
+{% load staticfiles %}
+{% load my_md %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社区公告</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+    <style>
+        #wrap{
+            background: url({% static 'anmtbg.jpg' %}) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        {% include 'header.html' %}
+        <div class="outer">
+            <div id="main">
+            {% for anmt in anmts %}
+                <article class="article article-type-post">
+                    <div class="article-inner">
+                        <header class="article-header">
+                            <h1 itemprop="name">
+                                <a class="article-title" href="/anmtcont/?aid={{ anmt.id }}" target="_blank">{{ anmt.a_title }}</a>
+                            </h1>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody">
+                            <h5>前言</h5>
+                            <hr>
+                            {{ anmt.a_desc }}
+                            <p class="article-more-link">
+                                <a href="/anmtcont/?aid={{ anmt.id }}" target="_blank">阅读全文</a>
+                            </p>
+                        </div>
+                        <footer class="article-footer">
+                            <div class="article-meta">
+                                <a class="article-date">
+                                    <time>{{ anmt.a_creating|date:'Y年m月d日' }}</time>
+                                </a>
+                            </div>
+                            <a data-url="存放文章的url" class="article-share-link">分享</a>
+                        </footer>
+                    </div>
+                 {% endfor %}
+                </article>
+
+                 <nav id="page-nav">
+                    {% if anmts.has_previous %}
+                            <a class="extend prev" rel="next" href="/announcement/?page={{ anmts.previous_page_number }}">« Prev</a>
+                    {% endif %}
+                    {% for pn in pages_num %}
+                        {% if anmts.number == pn %}
+                            <span class="page-number current">{{ pn }}</span>
+                        {% else %}
+                            <a class="page-number" href="/announcement/?page={{ pn }}">{{ pn }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if anmts.has_next %}
+                        <a class="extend next" rel="next" href="/announcement/?page={{ anmts.next_page_number }}">Next »</a>
+                    {% endif %}
+
+                </nav>
+
+
+
+            </div>
+        {% include 'slider.html' %}
+    </div>
+        {% include 'footer.html' %}
+    </div>
+</div>
+</body>
+</html>

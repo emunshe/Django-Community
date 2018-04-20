@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>啦啦啦</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+</head>
+<body>
+<div id="container">
+    <div id="wrap" style="background: url('{% static 'nnewandanmtBg.jpg' %}')">
+    {% include 'header.html' %}
+    <div class="outer">
+        <div id="main">
+            {% block main %}
+            {% endblock main %}
+        </div>
+        {% include 'slider.html' %}
+    </div>
+    {% include 'footer.html' %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'user.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+    <script type="text/javascript" src="{% static 'jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user.js' %}"></script>
+    <style>
+        body{
+            background: url({% static 'userbg.jpg' %}) no-repeat;
+        }
+        .liCls{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {% include 'header.html' %}
+
+        <div class="information">
+            <div class="content">
+                <div class="info_title">
+                    <h1 class="title_set">设置</h1>
+                    <ul class="list">
+                        <li class="liCls"><a href="/head/" id="zidongclick" target="tar_frame">修改头像</a></li>
+                        <li><a href="/basicsInfo/" target="tar_frame">基本资料</a></li>
+                        <li><a href="/going/" target="tar_frame">工作情况</a></li>
+                        <li><a href="/perInfo/" target="tar_frame">个人信息</a></li>
+                        <li><a href="/safe/" target="tar_frame">账户安全</a></li>
+                        <li><a href="/space/" target="_blank">我的空间</a></li>
+                    </ul>
+                </div>
+                <div id="info_content">
+                    <iframe src="" id="info_frame" name="tar_frame"
+                            width="82%" height="500px" scrolling="no" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

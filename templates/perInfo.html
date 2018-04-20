@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .info_perInfo{
+                background: white;
+                height: 500px;
+            }
+            .info_perInfo div{
+                padding-top: 40px;
+                padding-left: 20px;
+            }
+            .info_perInfo div input{
+                margin-left: 150px;
+                 width: 250px;
+                height: 20px;
+            }
+            .info_perInfo div span{
+                margin-left: 130px;
+            }
+        input{
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script type="text/javascript" src="{% static 'jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user.js' %}"></script>
+</head>
+
+<body>
+<form action="/perInfo/" method="post" class="info_perInfo">
+    {% csrf_token %}
+    <div>
+        <lable>用户名</lable><span>{{ user.username }}</span><br><br><br>
+        <lable>邮箱</lable><input class="changed" type="text" name="email" value="{{ user.email }}"><br><br><br>
+        <lable>地址</lable><input class="changed" type="text" name="address" value="{{ user.address }}"><br><br><br>
+        <lable>手机号</lable><span>{{ user.mobile }}</span><br><br><br>
+        <lable>QQ号</lable><span>{{ user.qq }}</span><br><br><br>
+        <input type="submit" value="提交" style="width: 50px; color: white; background-color: royalblue; margin-left: 180px">
+        <font style="color: red">{{ msgs.msg }}</font>
+    </div>
+</form>
+</body>
+</html>

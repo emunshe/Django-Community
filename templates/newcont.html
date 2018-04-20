@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load my_md %}
+{% block main %}
+    <article class="article article-type-post">
+        <div class="article-meta">
+          <a class="article-date">
+            <time>{{ new.n_creating.year }}年{{ new.n_creating.month }}月{{ new.n_creating.day }}日</time>
+          </a>
+        </div>
+        <div class="article-inner">
+            <header class="article-header">
+                <h1 itemprop="name">
+                    <a class="article-title">{{ new.n_title }}</a>
+                </h1>
+            </header>
+    <div class="article-entry" itemprop="articleBody">
+        <h2></h2>
+        <hr>
+        {{ new.n_content|md|safe}}
+      </div>
+    <footer class="article-footer">
+      <a data-url="存放文章的url" class="article-share-link">分享</a>
+    </footer>
+  </div>
+    </article>
+{% endblock main %}

@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社区论坛</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'forum.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor.js' %}"></script>
+
+</head>
+
+<body style="background: url({% static 'forumbg.jpg' %}) no-repeat">
+    <div class="forum">
+        {% include 'header.html' %}
+        <div class="forum_content">
+            <div class="title_table">
+                <table>
+                    <tr>
+                        <td style="padding-left: 210px">标题</td><td style="padding-left: 210px">作者</td>
+                        <td style="padding-left: 140px">留言数</td><td style="padding-left: 120px">创建时间</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cont_table">
+                {% for post in t_pre_page %}
+                    <table>
+                        <tr>
+                            <td style="width: 445px"><a href="/post/?pid={{ post.0 }}&uid={{ post.6 }}">{{ post.1|truncatechars:32 }}</a></td><td style="width: 170px"><a href="/space/?uid={{ post.6 }}">{{ post.5 }}</a></td>
+                                    <td style="width: 150px">{{ post.3 }}</td>
+
+                            <td style="width: 85px">{{ post.2 | date:'Y-m-d' }}</td>
+                        </tr>
+                    </table>
+                {% endfor %}
+               <div id="pagebar">
+
+                                <a href="/forum/?num={{ 1 }}">首页</a>
+                            {% if t_pre_page.has_previous %}
+                                <a href="/forum/?num={{ t_pre_page.previous_page_number }}">上一页</a>
+                            {% endif %}
+
+                            {% for page in showpage %}
+                                <a href="/forum/?num={{ page }}">{{ page }}</a>
+                            {% endfor %}
+
+
+                            {% if t_pre_page.has_next %}
+                                <a href="/forum/?num={{ t_pre_page.next_page_number}}">下一页</a>
+                            {% endif %}
+                            <a href="/forum/?num={{ totalPage }}">尾页</a>
+                            </div>
+            </div>
+        </div>
+
+
+        <div class="reply_form" style="height: 450px">
+            <form action="/forum/" method="post">
+                {% csrf_token %}
+                <div class="reply_title"><span style="line-height: 30px; margin-left: 10px; font-weight: 700">快速发帖</span></div>
+                <div class="reply_content">
+                    <input type="text" name="p_title" style="width: 300px; height: 25px; margin-left: 30px"><font style="font-size: 14px">请输入标题</font><br>
+                    <div style="margin-top: 10px;margin-left: 30px;">
+                        <textarea name="p_content">
+                        </textarea>
+                        <script type="text/javascript">CKEDITOR.replace('p_content');</script>
+                    </div>
+                    <input type="submit" value="发表帖子" style="width: 80px; height: 25px; background-color: #0081c2;margin-left: 30px;margin-top: 10px">
+                    <font style="color: red">{{ msg }}</font>
+                </div>
+
+            </form>
+        </div>
+{#        <!-- UY BEGIN -->#}
+{#        <div id="uyan_frame"></div>#}
+{#        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2161413"></script>#}
+{#        <!-- UY END -->#}
+
+        {% include 'footer.html' %}
+    </div>
+
+</body>
+</html>

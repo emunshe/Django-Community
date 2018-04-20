@@ -1,0 +1,84 @@
+
+.space{
+    margin: 0 auto;
+    width: 70%;
+    height: 635px;
+    background-color: white;
+}
+.space_title{
+    margin: 0 auto;
+    width: 96%;
+    height: 150px;
+    position: relative;
+}
+.space_title p{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    float: left;
+    font-size: 38px;
+    font-family: 方正舒体;
+    color: white;
+}
+.space_cont{
+    width: 70%;
+    height: 475px;
+    margin-left: 17px;
+    margin-top: 5px;
+    float: left;
+    border: 1px silver solid;
+}
+.space_head{
+    width: 25%;
+    height: 260px;
+    border: 1px silver solid;
+    float: right;
+    margin: 10px 17px 0 0;
+}
+.space_head div{
+    margin:0 auto;
+    width: 150px;
+    height: 150px;
+    margin-top: 30px;
+    border: 1px #c8c8c8 dashed;
+}
+.space_head div img{
+    width: 145px;
+    height: 145px;
+    margin: 2.5px;
+}
+.space_head p{
+    margin-top:10px;
+    text-align: center;
+    color: orangered;
+    font-size: 15px;
+    font-family: 华文隶书
+}
+.space_cont div:first-child{
+    background-color: #6FA5DB;
+}
+#space_post{
+    background-color: #6FA5DB;
+}
+#space_info li{
+    float: left;
+    width: 260px;
+    margin: 10px 0 0 10px;
+}
+#space_posts{
+    height: 380px;
+}
+#space_posts table{
+    padding: 3px 0;
+    border-bottom: dashed silver 1px;
+}
+#space_posts table:hover{
+    background-color: #c8c8c8;
+}
+td{
+    font-size: 14px;
+}
+span{
+    font-size: 15px;
+    color: orangered;
+}

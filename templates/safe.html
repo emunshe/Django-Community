@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .info_safe{
+                background: white;
+                height: 500px;
+            }
+            .info_safe div{
+            padding-top: 20px;
+            padding-left: 10px;
+            }
+            .info_safe div p{
+                padding-bottom: 10px;
+                font-size: 13px;
+            }
+            .info_safe div input{
+                margin-top: 20px;
+                width: 250px;
+                height: 20px;
+                margin-left: 150px;
+            }
+            input{
+                background-color: #EEEEEE;
+            }
+    </style>
+    <script type="text/javascript" src="{% static 'jquery-1.9.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'user.js' %}"></script>
+</head>
+
+<body>
+    <form class="info_safe" action="/safe/" method="post">
+        {% csrf_token %}
+        <div>
+            <p style="border-bottom: dashed gainsboro 1px">您必须填写原密码才能修改下面的资料</p>
+            <lable>旧密码</lable><input class="changed" name="oldpwd" type="password"><font style="color: red">{{ msgs.msg1 }}</font><br><br>
+            <lable>新密码</lable><input class="changed" name="newpwd1" type="password"><br><br>
+            <lable>确认新密码</lable><input class="changed" name="newpwd2" type="password" style="margin-left: 120px"><font style="color: red">{{ msgs.msg2 }}</font><br><br>
+            <input type="submit" value="提交" style="width: 50px; color: white; background-color: royalblue; margin-left: 200px">
+            <p><font style="color: red">{{ msgs.msg3 }}</font></p>
+        </div>
+    </form>
+</body>
+</html>

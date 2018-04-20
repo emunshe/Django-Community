@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的空间</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'space.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'lolo.ico' %}"/>
+    <script>
+        function checkReg() {
+            confirm("确定删除吗？")
+        }
+    </script>
+</head>
+
+<body style="background: url({% static 'spacebg.jpg' %}) no-repeat">
+    <div>
+        {% include 'header.html' %}
+        <div class="space">
+            <div class="space_title" style="margin-top: 30px; padding-top: 5px">
+                <div style="height: 150px; width: 100%; background: url('{% static 'spaceTB1.jpg'%}');">
+                    <p>{{ now_user.username }}的个人空间</p>
+                    <p style="top: 60px; left:100px;font-size: 20px;font-family: 楷体">{{ now_user.signature }}</p>
+                </div>
+            </div>
+            <div class="space_cont">
+                <div>
+                     <table>
+                        <tr><th>个人资料</th></tr>
+                    </table>
+                </div>
+                 <div style="height: 140px">
+                     <ul id="space_info">
+                         <li><span>用户名:{{ now_user.username}}</span></li>
+                         <li><span>年龄:{{ now_user.age }}</span></li>
+                         <li><span>性别:{{ now_user.sex }}</span></li>
+                         <li><span>职业:{{ now_user.profession }}</span></li>
+                         <li><span>注册时间:{{ now_user.creating|date:'Y-m-d' }}</span></li>
+                         <li><span>发帖数:{{ paginator.count }}</span></li>
+                         <li><span>最近发帖时间:{{ latepost.2|date:'Y-m-d' }}</span></li>
+                         <li><span>兴趣爱好:{{ now_user.hobby }}</span></li>
+
+                    </ul>
+                </div>
+                 <div id="space_post">
+                     <table>
+                        <tr><th>帖子</th></tr>
+                    </table>
+                </div>
+                 <div id="space_posts">
+                     <table>
+                         <tr><td style="width: 480px;text-align: center">主题</td><td style="width: 220px">发帖时间</td><td style="width: 100px">是否删除</td></tr>
+                    </table>
+                 <form action="/space/" onsubmit="return checkReg();" method="post">
+                 {% csrf_token %}
+                     {% for post in t_pre_page %}
+                        <table>
+                            <tr><td style="width: 430px"><a href="/post/?pid={{ post.0 }}" style="color: cornflowerblue">{{ post.1 | truncatechars:24 }}</a></td><td style="width: 220px">{{ post.2 | date:'Y-m-d' }}</td><td style="width: 70px"><input name="postDel" value="{{ post.0 }}" type="checkbox"></td></tr>
+                        </table>
+                     {% endfor %}
+
+                        <div style="float: right;  margin-right: 40px;margin-top: 5px">
+                            {% if t_pre_page.has_previous %}
+                                <a href="/space/?uid={{ now_user.uid }}&page={{ t_pre_page.previous_page_number }}" style="border: solid 1px #6FA5DB;">上一页</a>
+                            {% endif %}
+                            {% if t_pre_page.has_next %}
+                                <a href="/space/?uid={{ now_user.uid }}&page={{ t_pre_page.next_page_number }}" style="border: solid 1px #6FA5DB;">下一页</a>
+                            {% endif %}
+                            <input type="submit" value="删除" style="background-color: #2a6496">
+                        </div>
+                 </form>
+
+
+                </div>
+            </div>
+            <div class="space_head">
+                <div><img src="{{ MEDIA_URL }}{{ now_user.head }}"></div>
+                <p>{{ now_user.username}}</p>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>
